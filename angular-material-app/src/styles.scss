@@ -5,3 +5,18 @@ html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 .main-container { margin:1rem; }
 .mat-toolbar { z-index:1}
+
+.card-demo mat-card,
+.card-demo mat-card-content {
+  margin-bottom: 24px;
+}
+
+.card-demo mat-card-footer {
+  left: 24px;
+  margin-bottom: 24px;
+}
+.large {
+    height: 200px;
+    background: green;
+}
+ 

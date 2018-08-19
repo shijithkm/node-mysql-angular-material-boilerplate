@@ -13,6 +13,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatPaginatorModule,
     MatToolbarModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule
   ],
   exports: [
     FlexLayoutModule,
@@ -43,7 +49,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatPaginatorModule,
     MatToolbarModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule
   ],
   declarations: []
 })
