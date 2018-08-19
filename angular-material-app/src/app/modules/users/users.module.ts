@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { UsersComponent } from './users.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
