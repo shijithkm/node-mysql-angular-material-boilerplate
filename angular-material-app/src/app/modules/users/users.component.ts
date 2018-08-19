@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatDialog } from '@angular/material';
+import { AddUserComponent } from './add-user/add-user.component';
 
 import { User } from './user';
 import { UserService } from './user.service';
@@ -10,14 +12,14 @@ import { UserService } from './user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'id', 'name','edit'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'edit'];
   dataSource: MatTableDataSource<User>;
   selection = new SelectionModel<User>(true, []);
   users: User[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private dialog: MatDialog) {
 
     this.userService.getAllUsers().subscribe(
       users => {
@@ -30,6 +32,18 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  addUser() {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
 
   }
 

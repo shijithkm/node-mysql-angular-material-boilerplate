@@ -1,10 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
-.main-container { margin:1rem; }
-.mat-toolbar { z-index:1}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+  margin: 1rem;
+}
+
+.mat-toolbar {
+  z-index: 1
+}
 
 .card-demo mat-card,
 .card-demo mat-card-content {
@@ -16,7 +29,13 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
   margin-bottom: 24px;
 }
 .large {
-    height: 200px;
-    background: green;
+  height: 200px;
+  background: green;
 }
- 
+.dialog-content {
+  min-height: 250px;
+}
+
+mat-form-field{
+  width: 100%;
+}

@@ -1,0 +1,27 @@
+<form onSubmit="submitForm()">
+
+  <div fxLayoutAlign="space-between start">
+    <span>
+      <h3 mat-dialog-title>Add User</h3>
+    </span>
+    <span>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon aria-label="Example icon-button with a heart icon">close</mat-icon>
+      </button>
+    </span>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+
+    <mat-form-field>
+      <input matInput placeholder="Enter name here" >
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button type="reset">Clear</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>
+  </mat-dialog-actions>
+
+</form>
