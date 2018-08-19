@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MatNavComponent } from './mat-nav/mat-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
