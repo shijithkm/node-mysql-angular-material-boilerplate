@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HttpClientModule }  from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
@@ -18,13 +19,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MatCardModule,
     MatExpansionModule,
@@ -40,9 +44,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatListModule,
     MatGridListModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
+    HttpClientModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MatCardModule,
     MatExpansionModule,
@@ -58,7 +66,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatListModule,
     MatGridListModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   declarations: []
 })

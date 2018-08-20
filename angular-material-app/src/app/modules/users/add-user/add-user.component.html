@@ -1,4 +1,4 @@
-<form onSubmit="submitForm()">
+<form #userForm="ngForm" [formGroup]="userFormGroup" (ngSubmit)="submitForm()">
 
   <div fxLayoutAlign="space-between start">
     <span>
@@ -14,14 +14,23 @@
   <mat-dialog-content class="dialog-content">
 
     <mat-form-field>
-      <input matInput placeholder="Enter name here" >
+      <input matInput placeholder="Enter name here" formControlName="name">
+      <mat-error>Name field cannot be empty</mat-error>
     </mat-form-field>
 
 
   </mat-dialog-content>
-  <mat-dialog-actions align="end">
+  <mat-dialog-actions align="end" fxLayoutGap="1rem" fxLayoutAlign="end center">
+
+    <span *ngIf="this.messageObj.status" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <i *ngIf="this.messageObj.type == 'success'" style="color:#004D40" class="material-icons">check_circle</i>
+      <i *ngIf="this.messageObj.type == 'error'" style="color:#C62828" class="material-icons">error</i>
+      <span>{{ this.messageObj.message }} </span>
+    </span>
+    <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
     <button mat-raised-button type="reset">Clear</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>
+    <button type="submit" [disabled]="userForm.invalid" mat-raised-button color="primary">Save</button>
   </mat-dialog-actions>
 
 </form>
