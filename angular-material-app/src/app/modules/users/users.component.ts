@@ -45,7 +45,15 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
 
+  editRow(e) {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      height: '400px',
+      width: '600px',
+      data: e
+    });
+    console.log(e);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

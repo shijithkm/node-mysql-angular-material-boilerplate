@@ -32,6 +32,13 @@ export class UserService {
       );
   }
 
+  editUser(obj): Observable<any> {
+    return this.http.put<any>(this.usersUrl + '/' + obj.id, obj)
+      .pipe(
+        catchError(this.handleError('EditUsers', []))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
