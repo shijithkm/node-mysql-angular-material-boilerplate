@@ -52,23 +52,9 @@ const UserModel = () => {
         });
     };
 
-    const remove = (req, res) => {
-
+    const removeMultiple = (req, res) => {
         return new Promise((resolve, reject) => {
-            db.query(`delete users where id= ${parseInt(req.params.id)}`, function (err, results) {
-                if (err)
-                    return reject(err);
-                else {
-                    return resolve(results);
-                }
-            });
-        });
-    };
-
-    const removeAll = (req, res) => {
-
-        return new Promise((resolve, reject) => {
-            db.query(`truncate users`, function (err, results) {
+            db.query(`delete from users where id in (${req.params.ids})`, function (err, results) {
                 if (err)
                     return reject(err);
                 else {
@@ -84,8 +70,7 @@ const UserModel = () => {
         findOne,
         create,
         update,
-        remove,
-        removeAll
+        removeMultiple
     }
 }
 

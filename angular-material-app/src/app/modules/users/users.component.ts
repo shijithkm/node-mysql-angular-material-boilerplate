@@ -17,11 +17,27 @@ export class UsersComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
   selection = new SelectionModel<User>(true, []);
   users: User[];
+  loading: boolean;
+  messageObj = {
+    status: false,
+    type: '',
+    message: ''
+  };
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private userService: UserService, private dialog: MatDialog) {
 
+    this.loadUsers();
+
+  }
+
+  ngOnInit() {
+
+  }
+
+  loadUsers() {
+    this.loading = true;
     this.userService.getAllUsers().subscribe(
       users => {
         this.users = users;
@@ -29,11 +45,8 @@ export class UsersComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.users);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.loading = false;
       });
-  }
-
-  ngOnInit() {
-
   }
 
   addUser() {
@@ -43,6 +56,7 @@ export class UsersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.loadUsers();
       console.log(`Dialog result: ${result}`);
     });
   }
@@ -53,8 +67,59 @@ export class UsersComponent implements OnInit {
       width: '600px',
       data: e
     });
-    console.log(e);
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadUsers();
+      console.log(`Dialog result: ${result}`);
+    });
   }
+
+  deleteRows() {
+
+    const ids = [];
+    this.selection.selected.forEach((e, i) => {
+      ids.push(e.id);
+    });
+
+    console.log(ids);
+
+    this.userService.deleteUsers(ids).subscribe((result) => {
+
+      if (result.affectedRows > 0) {
+
+        this.messageObj.status = true;
+        this.messageObj.type = 'success';
+        this.messageObj.message = result.affectedRows + ' users has been deleted successfully!';
+
+        this.loading = false;
+
+        this.loadUsers();
+
+      } else {
+
+        this.messageObj.status = true;
+        this.messageObj.type = 'error';
+        this.messageObj.message = 'Selected users cannot be deleted this time ';
+
+        this.loading = false;
+
+      }
+
+      
+
+      /** Reset Form */
+      setTimeout(() => {
+
+        this.messageObj.status = false;
+        this.messageObj.type = null;
+        this.messageObj.message = null;
+
+      }, 3000);
+
+    });
+
+
+  }
+
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

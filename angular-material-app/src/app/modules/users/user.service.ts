@@ -39,6 +39,13 @@ export class UserService {
       );
   }
 
+  deleteUsers(obj): Observable<any> {
+    return this.http.delete<any>(this.usersUrl + '/' + obj)
+      .pipe(
+        catchError(this.handleError('DeleteUsers', []))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

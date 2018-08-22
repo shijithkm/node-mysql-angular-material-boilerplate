@@ -4,12 +4,21 @@
     <mat-card-title>Manage Users</mat-card-title>
     <mat-card-subtitle>Manage users with add,update and delete</mat-card-subtitle>
 
-    <span>
-      <button mat-icon-button>
-        <mat-icon color="primary" aria-label="Delete">delete</mat-icon>
+    <span fxLayoutAlign="start center" fxLayoutGap="5px">
+
+      <span *ngIf="this.messageObj.status" fxLayoutAlign="start center" fxLayoutGap="5px">
+        <i *ngIf="this.messageObj.type == 'success'" style="color:#004D40" class="material-icons">check_circle</i>
+        <i *ngIf="this.messageObj.type == 'error'" style="color:#C62828" class="material-icons">error</i>
+        <span>{{ this.messageObj.message }} </span>
+      </span>
+      
+      <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+      <button color="primary" mat-icon-button (click)="deleteRows()" [disabled]="!selection.hasValue()">
+        <mat-icon aria-label="Delete">delete</mat-icon>
       </button>
-      <button mat-icon-button (click)="addUser()">
-        <mat-icon color="primary" aria-label="Add New">playlist_add</mat-icon>
+      <button color="primary" mat-icon-button (click)="addUser()">
+        <mat-icon aria-label="Add New">playlist_add</mat-icon>
       </button>
 
     </span>
@@ -26,7 +35,8 @@
         </mat-form-field>
       </span>
       <span fxFlex="50%">
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator></span>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </span>
     </div>
 
 

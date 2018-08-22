@@ -42,17 +42,8 @@ const UserController = () => {
             });
 
     };
-    const remove = (req, res) => {
-        userModel.remove(req, res)
-            .then((results) => {
-                res.json(results)
-            })
-            .catch((e) => {
-                res.json(e)
-            });
-    };
-    const removeAll = (req, res) => {
-        userModel.removeAll(req, res)
+    const removeMultiple = (req, res) => {
+        userModel.removeMultiple(req, res)
             .then((results) => {
                 res.json(results)
             })
@@ -66,8 +57,7 @@ const UserController = () => {
         findOne,
         create,
         update,
-        remove,
-        removeAll
+        removeMultiple
     };
 };
 

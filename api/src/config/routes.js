@@ -4,7 +4,6 @@ const routes = {
     'GET /users/:id': 'UserController.findOne',
     'POST /users': 'UserController.create',
     'PUT /users/:id': 'UserController.update',
-    'DELETE /users/:id': 'UserController.remove',
-    'DELETE /users': 'UserController.removeAll',
+    'DELETE /users/:ids': 'UserController.removeMultiple',
 };
 module.exports = routes;

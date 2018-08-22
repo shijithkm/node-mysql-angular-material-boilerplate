@@ -51,8 +51,6 @@ export class AddUserComponent implements OnInit {
 
     if (this.userFormGroup.value.id == null) {
 
-      
-
       this.userService.addUser(this.userFormGroup.value).subscribe((result) => {
         console.log(result);
         if (result.affectedRows > 0) {
@@ -87,7 +85,7 @@ export class AddUserComponent implements OnInit {
 
     } else {
 
-    
+
 
       this.userService.editUser(this.userFormGroup.value).subscribe((result) => {
 
